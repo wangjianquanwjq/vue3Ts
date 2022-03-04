@@ -1,25 +1,38 @@
-import Mock, { Random } from 'mockjs';
-//获取 mock.Random 对象
-// const Random = Mock.Random
-// 设置请求延时时间
-Mock.setup({
-    timeout: 2000
-})
-// mock一组数据
-const produceNewsData = function () {
-    let articles = []
-    for (let i = 0; i < 100; i++) {
-        let newArticleObject = {
-            title: Random.csentence(5, 30), //  Random.csentence( min, max )
-            thumbnail_pic_s: Random.dataImage('300x250', 'mock的图片'), // Random.dataImage( size, text ) 生成一段随机的 Base64 图片编码
-            author_name: Random.cname(), // Random.cname() 随机生成一个常见的中文姓名
-            date: Random.date() + ' ' + Random.time() // Random.date()指示生成的日期字符串的格式,默认为yyyy-MM-dd；Random.time() 返回一个随机的时间字符串
-        }
-        articles.push(newArticleObject)
-    }
-    return {
-        data: articles
-    }
-}
-// 拦截ajax请求，配置mock的数据
-Mock.mock('/api/test', 'get', produceNewsData)
+/**
+ * @author Hilary
+ * @date 2019/11/7
+ * @description [获取随机mock数据(6到10个元素的tableData数组)]
+ * 参考官网： http://mockjs.com/examples.html#Path
+ *           https://github.com/nuysoft/Mock/wiki/Syntax-Specification
+ */
+ import Mock from 'mockjs';
+ 
+ let data = Mock.mock('/api/test',{
+     "tableData|6-10": [
+         {
+             "name|1": [
+                 Mock.Random.cname(),
+                 Mock.mock('@cname'),
+                 Mock.mock('@cname()')
+             ],
+             "age|10-100": 16,
+             "ip|+1": [
+                 Mock.Random.ip(),
+                 Mock.mock('@ip'),
+                 Mock.mock('@ip()')
+             ],
+             "address|1": [
+                 Mock.mock(`@city(true)`),
+                 Mock.mock(`@city(true)`),
+                 Mock.mock(`@city(true)`)
+             ],
+             "date|1": [
+                 Mock.Random.date('yyyy-MM-dd'),
+                 Mock.Random.date('yyyy-MM-dd'),
+                 Mock.Random.date('yyyy-MM-dd')
+             ]
+         }
+     ]
+ })
+  
+ export default data;
