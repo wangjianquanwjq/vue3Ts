@@ -1,37 +1,167 @@
 
 <template>
-    <div @click="dome">表格</div>
+    <div>
+        <Table :data="tableData" :tabConfig="tabConfig" :header="header">
+            <template #operation="slotData">
+                <el-button type="primary" size="small">新增</el-button>
+                <el-button type="warning" size="small">禁用</el-button>
+                <el-button type="danger" size="small">删除</el-button>
+            </template>
+            <template #thumbnail="slotData">
+                <el-image
+                    style="width: 60px; height: 30px"
+                    :src="slotData.data.row.headImg || 'http://www.bocaibao.com.cn/images/1shouye_logo.png'"
+                    :preview-src-list="[slotData.data.row.headImg]"
+                ></el-image>
+            </template>
+            <template #sex="slotData">
+                <span>{{ slotData.data.row.sex == 0 ? '男' : '女' }}</span>
+            </template>
+        </Table>
+    </div>
 </template>
-<script  lang="ts">
+<script  lang="ts" setup>
 import http from '../../utils/index'
-import { defineComponent, ref } from "vue";
-export default defineComponent({
+const tableData = ref([
+    {
+        date: '2016-05-03',
+        name: 'Tom',
+        headImg:
+            "http://pic1.win4000.com/wallpaper/2019-01-12/5c39921496cea_270_185.jpg", //用户头像（url）
+        state: 'California',
+        city: 'Los Angeles',
+        address: 'No. 189, Grove St, Los Angeles',
+        zip: 'CA 90036',
+        sex: 0
+    },
+    {
+        date: '2016-05-02',
+        name: 'Tom',
+        headImg:
+            "http://pic1.win4000.com/wallpaper/2019-01-12/5c39921496cea_270_185.jpg", //用户头像（url）
+        state: 'California',
+        city: 'Los Angeles',
+        address: 'No. 189, Grove St, Los Angeles',
+        zip: 'CA 90036',
+        sex: 1
+    },
+    {
+        date: '2016-05-04',
+        name: 'Tom',
+        headImg:
+            "http://pic1.win4000.com/wallpaper/2019-01-12/5c39921496cea_270_185.jpg", //用户头像（url）
+        state: 'California',
+        city: 'Los Angeles',
+        address: 'No. 189, Grove St, Los Angeles',
+        zip: 'CA 90036',
+        sex: 1
+    },
+    {
+        date: '2016-05-01',
+        name: 'Tom',
+        headImg:
+            "http://pic1.win4000.com/wallpaper/2019-01-12/5c39921496cea_270_185.jpg", //用户头像（url）
+        state: 'California',
+        city: 'Los Angeles',
+        address: 'No. 189, Grove St, Los Angeles',
+        zip: 'CA 90036',
+        sex: 0
+    },
+    {
+        date: '2016-05-08',
+        name: 'Tom',
+        headImg:
+            "http://pic1.win4000.com/wallpaper/2019-01-12/5c39921496cea_270_185.jpg", //用户头像（url）
+        state: 'California',
+        city: 'Los Angeles',
+        address: 'No. 189, Grove St, Los Angeles',
+        zip: 'CA 90036',
+        sex: 0
+    },
+    {
+        date: '2016-05-06',
+        name: 'Tom',
+        headImg:
+            "http://pic1.win4000.com/wallpaper/2019-01-12/5c39921496cea_270_185.jpg", //用户头像（url）
+        state: 'California',
+        city: 'Los Angeles',
+        address: 'No. 189, Grove St, Los Angeles',
+        zip: 'CA 90036',
+        sex: 0
+    },
+    {
+        date: '2016-05-07',
+        name: 'Tom',
+        headImg:
+            "http://pic1.win4000.com/wallpaper/2019-01-12/5c39921496cea_270_185.jpg", //用户头像（url）
+        state: 'California',
+        city: 'Los Angeles',
+        address: 'No. 189, Grove St, Los Angeles',
+        zip: 'CA 90036',
+        sex: 0
+    },
+])
+const header = ref([
+    {
+        label: "时间",
+        value: "date"
+    },
+    {
+        label: "姓名",
+        value: "name"
+    }, {
+        label: "性别",
+        value: "sex",
+        columnType: "slot",
+        slotName: "sex"
 
-    setup(props) {
-        interface DataType {
-            data: any;
-            returnCode: string;
-            success: boolean;
-        }
-        const dome = () => {
-            http
-                .request<DataType>({
-                    url: "/api/test",
-                    method: "get",
-                    showLoading: true
-                })
-                .then((res) => {
-                    console.log(res.data);
-                    console.log(res.returnCode);
-                    console.log(res.success);
-                });
-
-        }
-        return {
-            dome
-        }
+    },
+    {
+        label: "图片",
+        value: "headImg",
+        columnType: "slot",
+        slotName: "thumbnail"
+    },
+    {
+        label: "状态",
+        value: "state"
+    },
+    {
+        label: "压缩",
+        value: "zip"
+    },
+    {
+        label: "城市",
+        value: "city"
+    },
+    {
+        label: "地址",
+        value: "address"
+    }, {
+        label: "操作",
+        value: "operation",
+        columnType: 'slot',
+        slotName: "operation"
     }
+])
+const tabConfig = ref({
+    height: 250,//表格数据
+    selection: true,//是否全选
+    leftFixed: 'left',//全选是否固定
+    operationWidth: '200'
 })
+// http
+//     .request<DataType>({
+//         url: "/api/test",
+//         method: "get",
+//         showLoading: true
+//     })
+//     .then((res) => {
+//         console.log(res.data);
+//         console.log(res.returnCode);
+//         console.log(res.success);
+//     });
+
 
 
 </script>

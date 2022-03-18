@@ -6,28 +6,17 @@
                 <Menu />
             </el-aside>
             <el-container>
-                <el-header>Header</el-header>
+                <el-header>头部</el-header>
                 <el-main>
                     <router-view class="content"></router-view>
                 </el-main>
-                <el-footer>Footer</el-footer>
+                <el-footer>底部</el-footer>
             </el-container>
         </el-container>
     </div>
 </template>
-<script lang="ts">
-import { computed, defineComponent } from 'vue'
-import Menu from '../components/menu/index.vue'
-export default defineComponent({
-    components: {
-        Menu
-    },
-    setup(props) {
-        console.log(props);
+<script lang="ts" setup>
 
-    }
-
-})
 </script>
 <style scoped>
 .common-layout .el-header,
@@ -46,5 +35,8 @@ export default defineComponent({
 }
 .content {
     height: calc(100vh - 120px);
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: auto;
 }
 </style>

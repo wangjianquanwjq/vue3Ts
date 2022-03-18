@@ -1,57 +1,27 @@
 <template>
-    <el-radio-group v-model="isCollapse" style="margin-bottom: 20px">
-        <el-radio-button :label="false">expand</el-radio-button>
-        <el-radio-button :label="true">collapse</el-radio-button>
-    </el-radio-group>
     <el-menu
-        default-active="2"
+        active-text-color="#ffd04b"
+        background-color="#545c64"
         class="el-menu-vertical-demo"
-        :collapse="isCollapse"
-        @open="handleOpen"
-        @close="handleClose"
+        default-active="1-1"
+        text-color="#fff"
     >
-        <el-sub-menu index="1">
+        <el-sub-menu :index="item.value" v-for="(item) in menuData" :key="item.value">
             <template #title>
                 <el-icon>
-                    <location />
+                    <icon-menu />
                 </el-icon>
-                <span>Navigator One</span>
+                <span>{{ item.label }}</span>
             </template>
             <el-menu-item-group>
-                <template #title>
-                    <span>Group One</span>
-                </template>
-                <el-menu-item index="1-1">item one</el-menu-item>
-                <el-menu-item index="1-2">item two</el-menu-item>
+                <el-menu-item
+                    :index="itemData.value"
+                    v-for="(itemData) in item.children"
+                    :key="itemData.value"
+                    @click="goMenu(itemData)"
+                >{{ itemData.label }}</el-menu-item>
             </el-menu-item-group>
-            <el-menu-item-group title="Group Two">
-                <el-menu-item index="1-3">item three</el-menu-item>
-            </el-menu-item-group>
-            <el-sub-menu index="1-4">
-                <template #title>
-                    <span>item four</span>
-                </template>
-                <el-menu-item index="1-4-1">item one</el-menu-item>
-            </el-sub-menu>
         </el-sub-menu>
-        <el-menu-item index="2">
-            <el-icon>
-                <icon-menu />
-            </el-icon>
-            <template #title>Navigator Two</template>
-        </el-menu-item>
-        <el-menu-item index="3" disabled>
-            <el-icon>
-                <document />
-            </el-icon>
-            <template #title>Navigator Three</template>
-        </el-menu-item>
-        <el-menu-item index="4">
-            <el-icon>
-                <setting />
-            </el-icon>
-            <template #title>Navigator Four</template>
-        </el-menu-item>
     </el-menu>
 </template>
 
@@ -62,8 +32,8 @@ import {
     Menu as IconMenu,
     Setting,
 } from '@element-plus/icons-vue'
-
-import { defineComponent, ref } from "vue";
+import { useRouter } from "vue-router"//第一步----引入路由实例
+import { defineComponent, ref, reactive } from "vue";
 export default defineComponent({
     components: {
         Location,
@@ -72,17 +42,54 @@ export default defineComponent({
         Setting,
     },
     setup(props) {
+        const router = useRouter(); ////第二步----引入路由方法
         const isCollapse = ref(false)
-        const handleOpen = (key: string, keyPath: string[]) => {
-            console.log(key, keyPath)
-        }
-        const handleClose = (key: string, keyPath: string[]) => {
-            console.log(key, keyPath)
+        const menuData = ref([
+            // 组件
+            {
+                label: "组件",
+                value: '1',
+                children: [
+                    {
+                        label: "表格",
+                        value: '1-1',
+                        path: '/'
+                    },
+                    {
+                        label: "表单",
+                        value: '1-2',
+                        path: '/from'
+                    }
+                ]
+            },
+            {
+                //学习
+                label: "学习",
+                value: "2",
+                children: [
+                    {
+                        label: 'typeScript',
+                        value: '2-1',
+                        path: '/typeScript'
+                    },
+                    {
+                        label: 'vueThree',
+                        value: '2-2',
+                        path: '/vueThree'
+                    }
+                ]
+            }
+        ])
+        // 菜单跳转
+        const goMenu = (rowData: any) => {
+            router.push(rowData.path)
         }
         return {
-            handleOpen,
-            handleClose,
-            isCollapse
+            // 函数
+            goMenu,
+            // 数据参数
+            isCollapse,
+            menuData
         }
     }
 
@@ -90,8 +97,7 @@ export default defineComponent({
 </script>
 
 <style>
-.el-menu-vertical-demo:not(.el-menu--collapse) {
-    width: 200px;
-    min-height: 400px;
+.el-menu {
+    height: 100%;
 }
 </style>

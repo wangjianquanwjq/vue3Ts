@@ -1,15 +1,23 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Table from '../view/table/index.vue';
-import From from '../view/table/index.vue';
 const router = createRouter({
     history: createWebHistory(),
     routes: [
         {
             path: '/',
-            component: Table,
+            name: "table",
+            component: () => import('../view/table/index.vue'),
         }, {
             path: '/from',
-            component: From,
+            name: "from",
+            component: () => import('../view/from/index.vue'),
+        }, {
+            path: '/typeScript',
+            name: "typeScript",
+            component: () => import('../view/typeScript/index.vue'),
+        }, {
+            path: '/vueThree',
+            name: "vueThree",
+            component: () => import('../view/vueThree/index.vue'),
         }
     ]
 })
