@@ -1,6 +1,7 @@
 <template>
-    <div>{{ arr }}</div>
+  <div>
+    <Screenfull />
+  </div>
 </template>
 <script lang="ts" setup>
-const arr = ref(12)
 </script>

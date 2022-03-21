@@ -6,6 +6,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     ElAside: typeof import('element-plus/es')['ElAside']
     ElButton: typeof import('element-plus/es')['ElButton']
+    ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
     ElContainer: typeof import('element-plus/es')['ElContainer']
     ElFooter: typeof import('element-plus/es')['ElFooter']
     ElHeader: typeof import('element-plus/es')['ElHeader']
@@ -20,6 +21,7 @@ declare module 'vue' {
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     From: typeof import('./components/from/index.vue')['default']
     Menu: typeof import('./components/menu/index.vue')['default']
+    Screenfull: typeof import('./components/screenfull/index.vue')['default']
     Table: typeof import('./components/table/index.vue')['default']
   }
 }
