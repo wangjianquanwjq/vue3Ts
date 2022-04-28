@@ -3,16 +3,14 @@
     <div>
         <Table :data="tableData" :tabConfig="tabConfig" :header="header">
             <template #operation="slotData">
-                <el-button type="primary" size="small">新增</el-button>
-                <el-button type="warning" size="small">禁用</el-button>
+                <el-button type="primary" size="small" @click="add">新增</el-button>
+                <el-button type="warning" size="small" @click="dome">禁用</el-button>
                 <el-button type="danger" size="small">删除</el-button>
             </template>
             <template #thumbnail="slotData">
-                <el-image
-                    style="width: 60px; height: 30px"
+                <el-image style="width: 60px; height: 30px"
                     :src="slotData.data.row.headImg || 'http://www.bocaibao.com.cn/images/1shouye_logo.png'"
-                    :preview-src-list="[slotData.data.row.headImg]"
-                ></el-image>
+                    :preview-src-list="[slotData.data.row.headImg]"></el-image>
             </template>
             <template #sex="slotData">
                 <span>{{ slotData.data.row.sex == 0 ? '男' : '女' }}</span>
@@ -22,6 +20,7 @@
 </template>
 <script  lang="ts" setup>
 import http from '../../utils/index'
+import https from '../../axiosTs/http'
 const tableData = ref([
     {
         date: '2016-05-03',
@@ -150,18 +149,25 @@ const tabConfig = ref({
     leftFixed: 'left',//全选是否固定
     operationWidth: '200'
 })
-// http
-//     .request<DataType>({
-//         url: "/api/test",
-//         method: "get",
-//         showLoading: true
-//     })
-//     .then((res) => {
-//         console.log(res.data);
-//         console.log(res.returnCode);
-//         console.log(res.success);
-//     });
+const add=()=>{
+    http
+        .request<DataType>({
+            url: `/weather_mini`,
+            method: "get",
+            showLoading: true,
+            params:{
+                city:'成都'
+            }
+        })
+        .then((res) => {
+            console.log(res);
 
+        });
+
+}
+const dome = () => {
+        console.log(https)
+}
 
 
 </script>

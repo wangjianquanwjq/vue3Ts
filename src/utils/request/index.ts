@@ -8,7 +8,7 @@ const DEAFULT_LOADING = true;
 class HYRequest {
   instance: AxiosInstance; //axios实例
   interceptors?: HYRequestInterceptors;
-  showLoading: boolean;
+  showLoading: boolean;//是否显示加载
   loading?: ILoadingInstance; //loading实例
   constructor(config: HYRequestConfig) {
     this.instance = axios.create(config);
