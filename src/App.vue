@@ -1,7 +1,7 @@
 
 <template>
   <el-config-provider :locale="locale">
-    <Layouts />
+    <router-view></router-view>
   </el-config-provider>
 </template>
 <script setup lang="ts">

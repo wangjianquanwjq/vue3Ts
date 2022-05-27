@@ -44,6 +44,9 @@ const testFun=(data:object)=>{
 }
 </script>
 <style scoped>
+.common-layout,.el-container{
+  height: 100vh;
+}
 .common-layout .el-header,
 .common-layout .el-footer {
   background-color: #b3c0d1;

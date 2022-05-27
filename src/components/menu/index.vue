@@ -61,7 +61,7 @@ const menuData = ref([
       {
         label: "表格",
         value: "1-1",
-        path: "/"
+        path: "/table"
       },
       {
         label: "表单",
