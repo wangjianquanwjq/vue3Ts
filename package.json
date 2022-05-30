@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "serve:mock": "vite serve --mode mock"
   },
   "dependencies": {
     "ant-design-vue": "^2.2.8",

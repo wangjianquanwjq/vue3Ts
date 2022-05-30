@@ -1,38 +1,31 @@
-/**
- * @author Hilary
- * @date 2019/11/7
- * @description [获取随机mock数据(6到10个元素的tableData数组)]
- * 参考官网： http://mockjs.com/examples.html#Path
- *           https://github.com/nuysoft/Mock/wiki/Syntax-Specification
- */
- import Mock from 'mockjs';
- 
- let data = Mock.mock('/api/test',{
-     "tableData|6-10": [
-         {
-             "name|1": [
-                 Mock.Random.cname(),
-                 Mock.mock('@cname'),
-                 Mock.mock('@cname()')
-             ],
-             "age|10-100": 16,
-             "ip|+1": [
-                 Mock.Random.ip(),
-                 Mock.mock('@ip'),
-                 Mock.mock('@ip()')
-             ],
-             "address|1": [
-                 Mock.mock(`@city(true)`),
-                 Mock.mock(`@city(true)`),
-                 Mock.mock(`@city(true)`)
-             ],
-             "date|1": [
-                 Mock.Random.date('yyyy-MM-dd'),
-                 Mock.Random.date('yyyy-MM-dd'),
-                 Mock.Random.date('yyyy-MM-dd')
-             ]
-         }
-     ]
- })
-  
- export default data;
+import Mock, { Random } from 'mockjs';
+const list: any = [];
+for (let i = 0; i < 20; i++) {
+    list.push({
+        id: Random.id(),
+        name: Random.cname(),
+        code: Random.integer(10000000, 80000000),
+        url: Random.url('http'),
+        createTime: Random.datetime('y-MM-dd HH:mm'),
+        updateTime: Random.datetime('y-MM-dd HH:mm')
+    })
+}
+export default {
+    // 查
+    getList: () => {
+        return {
+            total: list.length,
+            list: list
+        }
+    },
+    // 增
+    create: () => ({
+        result: true,
+        data: 'success'
+    }),
+    // 改
+    update: () => ({
+        result: true,
+        data: 'success'
+    })
+}

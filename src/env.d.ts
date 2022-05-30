@@ -7,3 +7,4 @@ declare module '*.vue' {
   export default component
 }
 declare module 'particles.vue3';
+declare module "mockjs";

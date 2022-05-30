@@ -1,7 +1,7 @@
 import axios from "axios";
 import type {AxiosInstance} from "axios";
 import type {HYRequestInterceptors, HYRequestConfig} from "./type";
-import {ElLoading} from "element-plus";
+import {ElLoading,ElNotification } from "element-plus";
 import {ILoadingInstance} from "element-plus/lib/components/loading/src/loading.type";
 const DEAFULT_LOADING = true;
  
@@ -49,11 +49,20 @@ class HYRequest {
         const data = res.data as any;
         if (data.returnCode === "-1001") {
           console.log("请求失败,错误信息");
+        }else if(data.code!=200){
+          alert(res.data.message)
+          // ElNotification({
+          //   title: '错误',
+          //   message: res.data.message,
+          //   type: 'error',
+          // })
         } else {
           return data;
         }
       },
       (err) => {
+        console.log(err);
+        
         console.log("所有实例的拦拦截器:响应拦截失败");
         if (err.response.status === 404) {
           console.log("404的错误");

@@ -3,7 +3,7 @@
   <div class="common-layout">
     <el-container>
       <el-aside :width="isCollapse ? '64px' : '200px'">
-        <Menu :isCollapse="isCollapse" :testProps="testPropsData" :company="company" @test-fun="testFun"/>
+        <Menu :isCollapse="isCollapse" :testProps="testPropsData" :company="company" @test-fun="testFun" />
       </el-aside>
       <el-container>
         <el-header>
@@ -12,8 +12,18 @@
               <el-image @click="open" style="width: 32px; height: 32px" :src="imgPath" />
             </div>
             <div class="full">
+              <div class="">
+                <span>姓名：管理员</span>
+                &emsp;
+                <el-popconfirm title="是否退出?" confirmButtonText="退出" @confirm="confirm">
+                  <template #reference>
+                    <span class="outLog">退出登录</span>
+                  </template>
+                </el-popconfirm>
+              </div>
+              &emsp;
               <Screenfull>
-                <el-image style="width: 32px; height: 32px" :src="full" />
+                <el-image style="width: 30px; height: 30px" :src="full" />
               </Screenfull>
             </div>
           </div>
@@ -27,8 +37,9 @@
   </div>
 </template>
 <script lang="ts" setup>
-import imgPath from "../assets/header/zhankai.png";
-import full from "../assets/header/full.png";
+import imgPath from "../assets/image/header/zhankai.png";
+import full from "../assets/image/header/full.png";
+const router = useRouter()//路由
 let isCollapse = ref(false);
 let company = ref<string>();
 let testPropsData = ref({
@@ -38,15 +49,24 @@ let testPropsData = ref({
 const open = () => {
   isCollapse.value = !isCollapse.value;
 };
-const testFun=(data:object)=>{
+const testFun = (data: object) => {
   console.log('子组件触发父组件的方法');
   console.log(data)
 }
+// 推出登录
+const confirm = () => {
+  sessionStorage.clear()
+  router.push({
+    name: 'login'
+  })
+}
 </script>
-<style scoped>
-.common-layout,.el-container{
+<style scoped lang="less">
+.common-layout,
+.el-container {
   height: 100vh;
 }
+
 .common-layout .el-header,
 .common-layout .el-footer {
   background-color: #b3c0d1;
@@ -83,8 +103,21 @@ const testFun=(data:object)=>{
 
 .header .switch,
 .full {
-  cursor: pointer;
-  padding-top: 14px;
-  box-sizing: border-box
+  /* padding-top: 14px; */
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+
+  .outLog {
+    cursor: pointer;
+
+  }
+
+  .screenfullBtn {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+  }
 }
 </style>

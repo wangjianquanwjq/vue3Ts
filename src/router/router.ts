@@ -3,13 +3,22 @@ import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 const routes: Array<RouteRecordRaw> = [
     {
         path: '/',
-        name: "login",
+        name: "log",
         component: () => import('../view/login/index.vue'),
+        redirect: { name: 'login', path: "/login" },
+        children: [
+            {
+                path: '/login',
+                name: "login",
+                component: () => import('../view/login/index.vue'),
+            },
+        ]
     },
     {
         path: '/home',
         name: "home",
         component: () => import('../layouts/index.vue'),
+        redirect: { name: 'table', path: "/table" },
         children: [
             {
                 path: '/table',
@@ -36,6 +45,15 @@ const router = createRouter({
     history: createWebHistory(),
     routes
 })
+router.beforeEach(async (to, from, next) => {
+    let token = sessionStorage.getItem('userInfo')
+    if (token == null&&to.fullPath!="/login") {
+        next('/login')
+    } else {
+        next()
+    }
+    next()
+})
 export default router;
 // const router = createRouter({
 //     history: createWebHistory(),
@@ -61,7 +79,8 @@ export default router;
 //             path: '/vueThree',
 //             name: "vueThree",
 //             component: () => import('../view/vueThree/index.vue'),
-//         }
+//         }import router from './router';
+
 //     ]
 // })
 // export default router;  

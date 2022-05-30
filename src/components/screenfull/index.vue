@@ -11,7 +11,7 @@
 import { onMounted, onUnmounted, reactive, toRefs } from "vue";
 import screenfull from "screenfull";
 import { ElMessage } from "element-plus";
-import full from "../../assets/header/full.png";
+import full from "../../assets/image/header/full.png";
 export default {
   setup() {
     const state = reactive({

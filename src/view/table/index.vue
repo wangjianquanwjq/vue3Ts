@@ -4,7 +4,7 @@
             <template #operation="slotData">
                 <el-button type="primary" size="small" @click="dialogTableVisible">弹窗</el-button>
                 <el-button type="primary" size="small" @click="add">新增</el-button>
-                <el-button type="warning" size="small" @click="dome">禁用</el-button>
+                <el-button v-debounce="dome" type="warning" size="small">禁用</el-button>
                 <el-button type="danger" size="small">删除</el-button>
             </template>
             <template #thumbnail="slotData">
@@ -22,7 +22,6 @@
 </template>
 <script lang="ts" setup>
 import http from "../../utils/index";
-import https from "../../axiosTs/http";
 const tableData = ref([
     {
         date: "2016-05-03",
@@ -168,7 +167,17 @@ const add = () => {
         });
 };
 const dome = () => {
-    console.log(https);
+    console.log(123);
+
+    // http
+    //     .request<DataType>({
+    //         url: `/upms/user/info`,
+    //         method: "get",
+    //         showLoading: true,
+    //     })
+    //     .then((res) => {
+    //         console.log(res);
+    //     });
 };
 const dialogTableVisible = () => {
     dialogRef.value.dialogVisibleFun()
