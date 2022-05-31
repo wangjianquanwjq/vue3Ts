@@ -1079,7 +1079,7 @@ parse-node-version@^1.0.1:
 
 particles.vue3@^2.0.6:
   version "2.0.6"
-  resolved "https://registry.yarnpkg.com/particles.vue3/-/particles.vue3-2.0.6.tgz#073deb5d704331109ff2f22af7a58ae82d3ba0cf"
+  resolved "https://registry.npmjs.org/particles.vue3/-/particles.vue3-2.0.6.tgz"
   integrity sha512-jSwLOvmOFmdwJyP4zfqzM/fL64Akbefdff5sQ7hnf1InAmv9b2QdswncR3DO2sP8KzhlhkFdenuROs0cZLRQVA==
   dependencies:
     core-js "^3.20.1"
