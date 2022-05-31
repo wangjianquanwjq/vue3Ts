@@ -1,6 +1,6 @@
 <template >
     <div>
-        <el-dialog v-model="dialogVisible" title="Shipping address">
+        <el-dialog  draggable v-model="dialogVisible" title="Shipping address">
             <el-table :data="gridData">
                 <el-table-column property="date" label="Date" width="150" />
                 <el-table-column property="name" label="Name" width="200" />
