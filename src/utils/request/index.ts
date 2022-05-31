@@ -1,10 +1,10 @@
 import axios from "axios";
-import type {AxiosInstance} from "axios";
-import type {HYRequestInterceptors, HYRequestConfig} from "./type";
-import {ElLoading,ElNotification } from "element-plus";
-import {ILoadingInstance} from "element-plus/lib/components/loading/src/loading.type";
+import type { AxiosInstance } from "axios";
+import type { HYRequestInterceptors, HYRequestConfig } from "./type";
+import { ElLoading, ElNotification } from "element-plus";
+import { ILoadingInstance } from "element-plus/lib/components/loading/src/loading.type";
 const DEAFULT_LOADING = true;
- 
+
 class HYRequest {
   instance: AxiosInstance; //axios实例
   interceptors?: HYRequestInterceptors;
@@ -49,20 +49,20 @@ class HYRequest {
         const data = res.data as any;
         if (data.returnCode === "-1001") {
           console.log("请求失败,错误信息");
-        }else if(data.code!=200){
-          alert(res.data.message)
-          // ElNotification({
-          //   title: '错误',
-          //   message: res.data.message,
-          //   type: 'error',
-          // })
+        } else if (data.code != 200) {
+          ElNotification({
+            title: '错误',
+            message: res.data.message,
+            type: 'error',
+            duration:2000
+          })
         } else {
           return data;
         }
       },
       (err) => {
         console.log(err);
-        
+
         console.log("所有实例的拦拦截器:响应拦截失败");
         if (err.response.status === 404) {
           console.log("404的错误");
@@ -98,22 +98,22 @@ class HYRequest {
         });
     });
   }
- 
+
   get<T>(config: HYRequestConfig): Promise<T> {
-    return this.request<T>({...config, method: "get"});
+    return this.request<T>({ ...config, method: "get" });
   }
- 
+
   post<T>(config: HYRequestConfig): Promise<T> {
-    return this.request<T>({...config, method: "post"});
+    return this.request<T>({ ...config, method: "post" });
   }
- 
+
   delete<T>(config: HYRequestConfig): Promise<T> {
-    return this.request<T>({...config, method: "delete"});
+    return this.request<T>({ ...config, method: "delete" });
   }
- 
+
   patch<T>(config: HYRequestConfig): Promise<T> {
-    return this.request<T>({...config, method: "patch"});
+    return this.request<T>({ ...config, method: "patch" });
   }
 }
- 
+
 export default HYRequest;

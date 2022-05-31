@@ -1,5 +1,5 @@
 <template>
-  <el-menu active-text-color="#ffd04b" background-color="#545c64" class="el-menu-vertical-demo" default-active="1-1"
+  <el-menu active-text-color="#ffd04b" background-color="#545c64" class="el-menu-vertical-demo" :default-active="active"
     text-color="#fff" :collapse="isCollapse">
     <el-sub-menu :index="item.value" v-for="(item) in menuData" :key="item.value">
       <template #title>
@@ -88,11 +88,13 @@ const menuData = ref([
     ]
   }
 ]);
+let active=ref('1-1')
 const count = ref(0)//打出来是一个对象  需要.value
 // const count2 = $ref(2)//不需要.value   官网  报错
 // 菜单跳转
 const goMenu = (rowData: any) => {
-  console.log(count)
+ console.log(rowData);
+ active=rowData.value
   router.push(rowData.path);
   emit('testFun', { 'emit': "子组件传回来的数据" })
 }

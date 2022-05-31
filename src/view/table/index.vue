@@ -4,7 +4,9 @@
             <template #operation="slotData">
                 <el-button type="primary" size="small" @click="dialogTableVisible">弹窗</el-button>
                 <el-button type="primary" size="small" @click="add">新增</el-button>
-                <el-button v-debounce="dome" type="warning" size="small">禁用</el-button>
+                <el-button v-debounce:click.3000.immediate="dome.bind(1, 2)" type="warning" size="small">禁用</el-button>
+                <!-- <el-button v-debounce:click.3000.immediate="dome.bind(1, 2)" type="warning" size="small">禁用</el-button> -->
+
                 <el-button type="danger" size="small">删除</el-button>
             </template>
             <template #thumbnail="slotData">
@@ -22,6 +24,7 @@
 </template>
 <script lang="ts" setup>
 import http from "../../utils/index";
+import { ElNotification } from 'element-plus'
 const tableData = ref([
     {
         date: "2016-05-03",
@@ -166,9 +169,14 @@ const add = () => {
             console.log(res);
         });
 };
-const dome = () => {
-    console.log(123);
+const dome = (a: number, b: number) => {
 
+
+    ElNotification({
+        title: 'Error',
+        message: 'This is an error message',
+        type: 'error',
+    })
     // http
     //     .request<DataType>({
     //         url: `/upms/user/info`,
