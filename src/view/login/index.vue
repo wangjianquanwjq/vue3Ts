@@ -21,7 +21,7 @@
                         </div>
                     </el-form-item>
                     <el-form-item>
-                        <el-button type="primary" @click="submitForm(ruleFormRef)" style="width: 100%">登录</el-button>
+                        <el-button type="primary" v-debounce:click.3000.immediate="submitForm(ruleFormRef)" style="width: 100%">登录</el-button>
                     </el-form-item>
                     <el-form-item>
                         <div class="tips">
