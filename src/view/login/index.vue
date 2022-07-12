@@ -21,7 +21,7 @@
                         </div>
                     </el-form-item>
                     <el-form-item>
-                        <el-button type="primary" v-debounce:click.3000.immediate="submitForm(ruleFormRef)" style="width: 100%">登录</el-button>
+                        <el-button type="primary" @click="submitForm(ruleFormRef)" style="width: 100%">登录</el-button>
                     </el-form-item>
                     <el-form-item>
                         <div class="tips">
@@ -112,7 +112,7 @@ const submitForm = (formEl: FormInstance | undefined) => {
             margin-top: 40px;
         }
 
-        /deep/ .el-input__inner {
+        :deep(.el-input__inner) {
             background: transparent;
             box-shadow: 0 0 0 1px #0ba1f8;
             border: 1px solid #0ba1f8;
@@ -123,7 +123,7 @@ const submitForm = (formEl: FormInstance | undefined) => {
             width: 440px;
             margin: 0 auto;
 
-            /deep/.el-input {
+            :deep(.el-input) {
                 background: rgba(11, 161, 248, .1);
 
             }
@@ -142,7 +142,7 @@ const submitForm = (formEl: FormInstance | undefined) => {
                 align-items: center;
                 justify-content: space-between;
 
-                /deep/.el-checkbox__inner {
+                :deep(.el-checkbox__inner) {
                     background: transparent;
                     box-shadow: 0 0 0 1px #0ba1f8;
                     border: 1px solid #0ba1f8;
