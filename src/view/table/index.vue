@@ -157,7 +157,7 @@ const tabConfig = ref<object>({
 const dialogRef = ref<any>();
 const add = () => {
     http
-        .request<DataType>({
+        .request({
             url: `/weather_mini`,
             method: "get",
             showLoading: true,
