@@ -107,7 +107,7 @@ const confirm = () => {
   box-sizing: border-box;
   display: flex;
   align-items: center;
-
+  cursor: pointer;
   .outLog {
     cursor: pointer;
 

@@ -53,7 +53,7 @@ const router = useRouter()//路由
 // 登录请求
 const loginFun = () => {
     http
-        .request<DataType>({
+        .request({
             url: `/login`,
             method: "post",
             showLoading: true,
@@ -62,7 +62,7 @@ const loginFun = () => {
                 pass: ruleForm.pass,
             }
         })
-        .then((res) => {
+        .then((res: any) => {
             if (res.code == 200) {
                 router.push({
                     //   name:"home",
