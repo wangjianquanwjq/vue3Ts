@@ -4,6 +4,7 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    AButton: typeof import('ant-design-vue/es')['Button']
     Dialog: typeof import('./components/dialog/index.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElButton: typeof import('element-plus/es')['ElButton']
@@ -28,6 +29,7 @@ declare module 'vue' {
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     From: typeof import('./components/from/index.vue')['default']
     Menu: typeof import('./components/menu/index.vue')['default']
+    Model: typeof import('./components/model/index.vue')['default']
     Screenfull: typeof import('./components/screenfull/index.vue')['default']
     Table: typeof import('./components/table/index.vue')['default']
   }

@@ -2,6 +2,16 @@
 # yarn lockfile v1
 
 
+"@amap/amap-jsapi-loader@^1.0.1":
+  "integrity" "sha512-nPyLKt7Ow/ThHLkSvn2etQlUzqxmTVgK7bIgwdBRTg2HK5668oN7xVxkaiRe3YZEzGzfV2XgH5Jmu2T73ljejw=="
+  "resolved" "https://registry.npmjs.org/@amap/amap-jsapi-loader/-/amap-jsapi-loader-1.0.1.tgz"
+  "version" "1.0.1"
+
+"@amap/amap-jsapi-types@^0.0.13":
+  "integrity" "sha512-hwp36URjQT9vDTmoUPYph3SEAiOvoUB+PGK0jZeZamgvaxew7rgc1XZWL/HphyMfRAqKwIYsAvXm9v8DTSjjzA=="
+  "resolved" "https://registry.npmjs.org/@amap/amap-jsapi-types/-/amap-jsapi-types-0.0.13.tgz"
+  "version" "0.0.13"
+
 "@ant-design/colors@^6.0.0":
   "integrity" "sha512-qAZRvPzfdWHtfameEGP2Qvuf838NhergR35o+EuVyB5XvSA98xod5r4utvi4TJ3ywmevm290g9nsCG5MryrdWQ=="
   "resolved" "https://registry.npmjs.org/@ant-design/colors/-/colors-6.0.0.tgz"
@@ -285,10 +295,10 @@
     "@vue/compiler-dom" "3.2.31"
     "@vue/shared" "3.2.31"
 
-"@vue/devtools-api@^6.0.0-beta.18":
-  "integrity" "sha512-iO/4FIezHKXhiDBdKySCvJVh8/mZPxHpiQrTy+PXVqJZgpTPTdHy4q8GXulaY+UKEagdkBb0onxNQZ0LNiqVhw=="
-  "resolved" "https://registry.npmjs.org/@vue/devtools-api/-/devtools-api-6.0.12.tgz"
-  "version" "6.0.12"
+"@vue/devtools-api@^6.0.0-beta.18", "@vue/devtools-api@^6.5.0":
+  "integrity" "sha512-o9KfBeaBmCKl10usN4crU53fYtC1r7jJwdGKjPT24t348rHxgfpZ0xL3Xm/gLUYnc0oTp8LAmrxOeLyu6tbk2Q=="
+  "resolved" "https://registry.npmjs.org/@vue/devtools-api/-/devtools-api-6.5.0.tgz"
+  "version" "6.5.0"
 
 "@vue/reactivity-transform@3.2.31":
   "integrity" "sha512-uS4l4z/W7wXdI+Va5pgVxBJ345wyGFKvpPYtdSgvfJfX/x2Ymm6ophQlXXB6acqGHtXuBqNyyO3zVp9b1r0MOA=="
@@ -1370,6 +1380,19 @@
   "resolved" "https://registry.npmjs.org/pify/-/pify-4.0.1.tgz"
   "version" "4.0.1"
 
+"pinia-plugin-persistedstate@^3.1.0":
+  "integrity" "sha512-8UN+vYMEPBdgNLwceY08mi5olI0wkYaEb8b6hD6xW7SnBRuPydWHlEhZvUWgNb/ibuf4PvufpvtS+dmhYjJQOw=="
+  "resolved" "https://registry.npmjs.org/pinia-plugin-persistedstate/-/pinia-plugin-persistedstate-3.1.0.tgz"
+  "version" "3.1.0"
+
+"pinia@^2.0.0", "pinia@^2.0.33":
+  "integrity" "sha512-HOj1yVV2itw6rNIrR2f7+MirGNxhORjrULL8GWgRwXsGSvEqIQ+SE0MYt6cwtpegzCda3i+rVTZM+AM7CG+kRg=="
+  "resolved" "https://registry.npmjs.org/pinia/-/pinia-2.0.33.tgz"
+  "version" "2.0.33"
+  dependencies:
+    "@vue/devtools-api" "^6.5.0"
+    "vue-demi" "*"
+
 "postcss@^8.1.10", "postcss@^8.4.6":
   "integrity" "sha512-L9Ye3r6hkkCeOETQX6iOaWZgjp3LL6Lpqm6EtgbKrgqGGteRMNb9vzBfRL96YOSu8o7x3MfIH9Mo5cPJFGrW6A=="
   "resolved" "https://registry.npmjs.org/postcss/-/postcss-8.4.7.tgz"
@@ -1723,7 +1746,7 @@
   "resolved" "https://registry.npmjs.org/tsparticles-engine/-/tsparticles-engine-2.0.6.tgz"
   "version" "2.0.6"
 
-"typescript@*", "typescript@^4.5.4":
+"typescript@*", "typescript@^4.5.4", "typescript@>=4.4.4":
   "integrity" "sha512-TCTIul70LyWe6IJWT8QSYeA54WQe8EjQFU4wY52Fasj5UKx88LNYKCgBEHcOMOrFF1rKGbD8v/xcNWVUq9SymA=="
   "resolved" "https://registry.npmjs.org/typescript/-/typescript-4.5.5.tgz"
   "version" "4.5.5"
@@ -1954,7 +1977,7 @@
   dependencies:
     "is-plain-object" "3.0.1"
 
-"vue@^2.6.0 || ^3.2.0", "vue@^3.0.0", "vue@^3.0.0-0 || ^2.6.0", "vue@^3.2.0", "vue@^3.2.25", "vue@>=3", "vue@>=3.0.3", "vue@>=3.1.0", "vue@2 || 3", "vue@3.2.31":
+"vue@^2.6.0 || ^3.2.0", "vue@^2.6.14 || ^3.2.0", "vue@^3.0.0", "vue@^3.0.0-0 || ^2.6.0", "vue@^3.2.0", "vue@^3.2.25", "vue@>=3", "vue@>=3.0.3", "vue@>=3.1.0", "vue@2 || 3", "vue@3.2.31":
   "integrity" "sha512-odT3W2tcffTiQCy57nOT93INw1auq5lYLLYtWpPYQQYQOOdHiqFct9Xhna6GJ+pJQaF67yZABraH47oywkJgFw=="
   "resolved" "https://registry.npmjs.org/vue/-/vue-3.2.31.tgz"
   "version" "3.2.31"

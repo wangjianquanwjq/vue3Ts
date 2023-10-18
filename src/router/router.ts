@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import staticRouter from './staticRouter'
-import MainRouter from './MainRouter'
+import MainRouter from './mainRouter'
 //基础路由
 // const routes: Array<RouteRecordRaw> = [
 //     {

@@ -5,6 +5,8 @@ import 'element-plus/dist/index.css'
 import App from './App.vue'
 import Particles from 'particles.vue3'
 import debounce from './utils/directive/debounce'
+import {createPinia}  from 'pinia'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 /**
  * 引入自定义的mockXHR
  * 因为mockXHR不是默认导出的：export default{}
@@ -16,5 +18,7 @@ if (process.env.NODE_ENV == "mock") {
     mockXHR();
     // mockXHR2();
 }
+const pinia=createPinia()
+pinia.use(piniaPluginPersistedstate)
 // createApp(App).use(router).use(ElementPlus).mount('#app')
-createApp(App).use(router).use(Particles).use(debounce).mount('#app')
+createApp(App).use(router).use(Particles).use(debounce).use(pinia).mount('#app')
